@@ -1,0 +1,5 @@
+project: rnshah9/mayhem-xxl
+target: xxl
+
+cmds:
+  - cmd: /repo/xxl
