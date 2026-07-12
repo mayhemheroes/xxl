@@ -1,0 +1,14 @@
+project: xxl
+target: xxl
+
+# File-input (CLI) target: the XXL interpreter parses+evaluates the input file — main() -> args()
+# -> evalfile() -> parsestr()/evalin() — then exits (stdout is not a tty under Mayhem), so the
+# binary is also its own single-input reproducer. Built single-threaded (see mayhem/build.sh).
+# Seeds use the sanctioned two-entry form: the accumulating server tar plus the committed clean
+# XXL programs under mayhem/xxl/testsuite. detect_leaks=0 is baked via __asan_default_options
+# (mayhem/asan_default_options.c) because this allocate-and-exit VM never frees its workspace.
+cmds:
+  - cmd: /mayhem/xxl @@
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/xxl/testsuite
