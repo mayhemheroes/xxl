@@ -1,4 +1,4 @@
-BUILDH="yes"
+# BUILDH="yes"
 CC="gcc"
 NODE="node" # often 'nodejs'
 ARCH="-m64"
